@@ -5,7 +5,7 @@ namespace ozhigin;
 class LineEq {
     protected $x;
 
-    public function solveLineEq($a, $b) {
+    public function solveLineEq(float $a, float $b): array {
         if($a == 0) {
             throw new OzhiginException('No roots');
         }

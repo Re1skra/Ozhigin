@@ -7,15 +7,24 @@ use ozhigin\OzhiginException;
 ini_set("display_errors", 1);
 error_reporting(-1);
 
-require_once('core\EquationInterface.php');
-require_once('core\LogInterface.php');
-require_once('core\LogAbstract.php');
+require_once('core\core\EquationInterface.php');
+require_once('core\core\LogInterface.php');
+require_once('core\core\LogAbstract.php');
 require_once('ozhigin/MyLog.php');
 require_once('ozhigin/LineEq.php');
 require_once('ozhigin/SquareEq.php');
 require_once('ozhigin/OzhiginException.php');
 
 try {
+    $dirLog = 'log\\';
+    if (!file_exists($dirLog)) {
+        mkdir($dirLog, 0755);
+    }
+
+    $fileOpen = fopen("version", "r");
+    MyLog::log("Version program: " . fgets($fileOpen));
+    fclose($fileOpen);
+
     echo "Enter 3 parameters a, b, c \n\r";
 
     $a = (float)readline();
