@@ -7,8 +7,9 @@ class LineEq {
 
     public function solveLineEq($a, $b) {
         if($a == 0) {
-            return null;
+            throw new OzhiginException('No roots');
         }
-        return $this->x = -$b / $a;
+        MyLog::log('This is line equation');
+        return $this->x = array(-$b / $a);
     }
 }
