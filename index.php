@@ -1,52 +1,41 @@
 <?php
 
-class A {
+ini_set("display_errors", 1);
+error_reporting(-1);
 
+class A {
+    protected $x;
+
+    public function solveLineEq($a, $b) {
+        if($a == 0) {
+            return null;
+        }
+        return $this->x = -$b / $a;
+    }
 }
 
 class B extends A {
-    /**
-     * @return mixed
-     */
-    public function getA()
-    {
-        return $this->a;
+    protected function solveDiscriminant($a, $b, $c) {
+        return $discriminant = ($b ** 2) - 4 * $a * $c;
     }
 
-    /**
-     * @param mixed $a
-     */
-    public function setA($a)
-    {
-        $this->a = $a;
+    public function solveSquareEq($a, $b, $c) {
+        if($a == 0) {
+            return parent::solveLineEq($b, $c);
+        }
+        $dis = $this->solveDiscriminant($a, $b, $c);
+        if($dis > 0) {
+            $square = sqrt($dis);
+            return $this->x = array((-$b + $square) / (2 * $a), (-$b - $square) / (2 * $a));
+        }
+        if($dis == 0) {
+            return $this->x = -$b / (2 * $a);
+        }
+        return null;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getB()
-    {
-        return $this->b;
-    }
-
-    /**
-     * @param mixed $b
-     */
-    public function setB($b)
-    {
-        $this->b = $b;
-    }
-    public function __construct($a, $b)   {
-        $this->a = $a;
-        $this->b = $b;
-    }
-
-    protected $a, $b;
 }
 
-$a1 = new A();
-$a2 = new A();
-$b3 = new B($a1, $a2);
-$b4 = new B($b3, new A());
-
-var_dump ($b4);
+$a = new A();
+$b = new B();
+var_dump($a->solveLineEq(-8.5, -17));
+var_dump($b->solveSquareEq(-1, -2, 15));
