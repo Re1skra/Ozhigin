@@ -1,0 +1,33 @@
+{
+    "name": "re1skra/ozhigin",
+    "description": "project",
+    "type": "project",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Re1skra",
+            "email": "egorvudi30@gmail.com"
+        }
+    ],
+
+    "scripts": {
+        "post-install-cmd": [
+            "git symbolic-ref --short -q HEAD>version"
+        ]
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Re1skra/library"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/rok9ru/trpo-core"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "re1skra/library": "^1.0"
+    }
+}
