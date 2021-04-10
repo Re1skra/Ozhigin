@@ -28,6 +28,6 @@
     ],
     "require": {
         "php": "^7.3",
-        "re1skra/library": "^1.0"
+        "re1skra/library": "^2.0"
     }
 }

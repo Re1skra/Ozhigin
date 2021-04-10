@@ -15,10 +15,6 @@ try {
         mkdir($dirLog, 0755);
     }
 
-    $fileOpen = fopen("version", "r");
-    MyLog::log("Version program: " . fgets($fileOpen));
-    fclose($fileOpen);
-
     echo "Enter 3 parameters a, b, c \n\r";
 
     $a = (float)readline();
